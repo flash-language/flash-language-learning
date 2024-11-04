@@ -2,4 +2,4 @@ function Flashcards () {
 
 }
 
-export default Flashcards
+export default Flashcards;
