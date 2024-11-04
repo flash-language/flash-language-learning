@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-function Card() {
-  const [wordData, setWordData] = useState(null);
-  const url = "https://flash-language-5bfe9-default-rtdb.europe-west1.firebasedatabase.app/words.json/-OAcbs8YkDmCW3u_rE-n";
-
-  useEffect(() => {
-    axios.get(url)
-      .then((response) => {
-      
-        setWordData(response.data[1]);
-      })
-      .catch((e) => console.log(e));
-  }, []);
-
-  if (!wordData) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <div className="card">
-      <img src={wordData.ImageURL} alt={wordData.English} />
-      <h2>{wordData.English}</h2>
-    </div>
-  );
-}
+const Card = ({ word }) => {
+    return (
+        <div style={{ border: '1px solid #ddd', padding: '20px', textAlign: 'center', margin: 'auto', width: '300px' }}>
+            <h2>{word.english}</h2>
+            <div>
+                <img 
+                    src={word.image} 
+                    alt={word.english} 
+                    style={{ width: '100%', height: '150px', objectFit: 'cover', marginBottom: '20px' }} 
+                />
+            </div>
+            <p>{word.french}</p> {/* Optional if you only want the user to see English */}
+        </div>
+    );
+};
 
 export default Card;

@@ -1,5 +1,3 @@
-
-import Card from './components/Card'
 import './index.css'
 import { Routes, Route } from "react-router-dom";
 import Flashcards from "./pages/Flashcards";
@@ -24,7 +22,7 @@ function App() {
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
-     <Card></Card>
+     
     </>
   );
 }
