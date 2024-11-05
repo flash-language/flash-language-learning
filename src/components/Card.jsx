@@ -11,7 +11,7 @@ const Card = ({ word }) => {
                     style={{ width: '100%', height: '150px', objectFit: 'cover', marginBottom: '20px' }} 
                 />
             </div>
-            <p>{word.french}</p> {/* Optional if you only want the user to see English */}
+            <p>{word.french}</p>
         </div>
     );
 };

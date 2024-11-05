@@ -1,4 +1,4 @@
-import './index.css'
+import './css/index.css'
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
