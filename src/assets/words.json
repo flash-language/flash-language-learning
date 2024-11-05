@@ -1,0 +1,362 @@
+[
+    {
+      "english": "cat",
+      "spanish": "gato",
+      "french": "chat",
+      "arabic": "قط",
+      "german": "Katze",
+      "category": "animals",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Cat_poster_1.jpg"
+    },
+    {
+      "english": "dog",
+      "spanish": "perro",
+      "french": "chien",
+      "arabic": "كلب",
+      "german": "Hund",
+      "category": "animals",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cavalier_King_Charles_Spaniel_Ruby.jpg"
+    },
+    {
+      "english": "cow",
+      "spanish": "vaca",
+      "french": "vache",
+      "arabic": "بقرة",
+      "german": "Kuh",
+      "category": "animals",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Cow_female_black_white.jpg"
+    },
+    {
+      "english": "lion",
+      "spanish": "león",
+      "french": "lion",
+      "arabic": "أسد",
+      "german": "Löwe",
+      "category": "animals",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg"
+    },
+    {
+      "english": "tiger",
+      "spanish": "tigre",
+      "french": "tigre",
+      "arabic": "نمر",
+      "german": "Tiger",
+      "category": "animals",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg"
+    },
+    {
+      "english": "elephant",
+      "spanish": "elefante",
+      "french": "éléphant",
+      "arabic": "فيل",
+      "german": "Elefant",
+      "category": "animals",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/37/African_Bush_Elephant.jpg"
+    },
+    {
+      "english": "hedgehog",
+      "spanish": "erizo",
+      "french": "hérisson",
+      "arabic": "قنفذ",
+      "german": "Igel",
+      "category": "animals",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/65/Erinaceus_europaeus_LC0119.jpg"
+    },
+    {
+      "english": "dolphin",
+      "spanish": "delfín",
+      "french": "dauphin",
+      "arabic": "دولفين",
+      "german": "Delfin",
+      "category": "animals",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/79/Common_dolphin.jpg"
+    },
+    {
+      "english": "apple",
+      "spanish": "manzana",
+      "french": "pomme",
+      "arabic": "تفاح",
+      "german": "Apfel",
+      "category": "fruits",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg"
+    },
+    {
+      "english": "banana",
+      "spanish": "plátano",
+      "french": "banane",
+      "arabic": "موز",
+      "german": "Banane",
+      "category": "fruits",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Bananas.jpg"
+    },
+    {
+      "english": "orange",
+      "spanish": "naranja",
+      "french": "orange",
+      "arabic": "برتقال",
+      "german": "Orange",
+      "category": "fruits",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg"
+    },
+    {
+      "english": "pear",
+      "spanish": "pera",
+      "french": "poire",
+      "arabic": "كمثرى",
+      "german": "Birne",
+      "category": "fruits",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Pear_DS.jpg"
+    },
+    {
+      "english": "peach",
+      "spanish": "melocotón",
+      "french": "pêche",
+      "arabic": "خوخ",
+      "german": "Pfirsich",
+      "category": "fruits",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/Japanese_pear.jpg"
+    },
+    {
+      "english": "grape",
+      "spanish": "uva",
+      "french": "raisin",
+      "arabic": "عنب",
+      "german": "Traube",
+      "category": "fruits",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Table_grapes_on_white.jpg"
+    },
+    {
+      "english": "papaya",
+      "spanish": "papaya",
+      "french": "papaye",
+      "arabic": "بابايا",
+      "german": "Papaya",
+      "category": "fruits",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/Papaya.jpg"
+    },
+    {
+      "english": "fig",
+      "spanish": "higo",
+      "french": "figue",
+      "arabic": "تين",
+      "german": "Feige",
+      "category": "fruits",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Common_fig.jpg"
+    },
+    {
+      "english": "potato",
+      "spanish": "patata",
+      "french": "pomme de terre",
+      "arabic": "بطاطس",
+      "german": "Kartoffel",
+      "category": "vegetables",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Patates.jpg"
+    },
+    {
+      "english": "carrot",
+      "spanish": "zanahoria",
+      "french": "carotte",
+      "arabic": "جزر",
+      "german": "Karotte",
+      "category": "vegetables",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Carrots.jpg"
+    },
+    {
+      "english": "tomato",
+      "spanish": "tomate",
+      "french": "tomate",
+      "arabic": "طماطم",
+      "german": "Tomate",
+      "category": "vegetables",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg"
+    },
+    {
+      "english": "pepper",
+      "spanish": "pimiento",
+      "french": "poivron",
+      "arabic": "فلفل",
+      "german": "Paprika",
+      "category": "vegetables",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Green_and_red_peppers.jpg"
+    },
+    {
+      "english": "broccoli",
+      "spanish": "brócoli",
+      "french": "brocoli",
+      "arabic": "بروكلي",
+      "german": "Brokkoli",
+      "category": "vegetables",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Broccoli.JPG"
+    },
+    {
+      "english": "cucumber",
+      "spanish": "pepino",
+      "french": "concombre",
+      "arabic": "خيار",
+      "german": "Gurke",
+      "category": "vegetables",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Cucumber_on_white.jpg"
+    },
+    {
+      "english": "spinach",
+      "spanish": "espinaca",
+      "french": "épinard",
+      "arabic": "سبانخ",
+      "german": "Spinat",
+      "category": "vegetables",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Spinach_leaves.jpg"
+    },
+    {
+      "english": "lettuce",
+      "spanish": "lechuga",
+      "french": "laitue",
+      "arabic": "خس",
+      "german": "Salat",
+      "category": "vegetables",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/02/Lettuce-leaf.jpg"
+    },
+    {
+      "english": "football",
+      "spanish": "fútbol",
+      "french": "football",
+      "arabic": "كرة القدم",
+      "german": "Fußball",
+      "category": "sports",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Soccer_ball_Sepp_Herberger.jpg"
+    },
+    {
+      "english": "basketball",
+      "spanish": "baloncesto",
+      "french": "basket-ball",
+      "arabic": "كرة السلة",
+      "german": "Basketball",
+      "category": "sports",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Basketball.jpg"
+    },
+    {
+      "english": "baseball",
+      "spanish": "béisbol",
+      "french": "baseball",
+      "arabic": "بيسبول",
+      "german": "Baseball",
+      "category": "sports",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/43/Baseball_Diamond.jpg"
+    },
+    {
+      "english": "volleyball",
+      "spanish": "voleibol",
+      "french": "volley-ball",
+      "arabic": "كرة الطائرة",
+      "german": "Volleyball",
+      "category": "sports",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Volleyball_in_the_air.jpg"
+    },
+    {
+      "english": "golf",
+      "spanish": "golf",
+      "french": "golf",
+      "arabic": "غولف",
+      "german": "Golf",
+      "category": "sports",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Golf_ball_and_club.jpg"
+    },
+    {
+      "english": "hockey",
+      "spanish": "hockey",
+      "french": "hockey",
+      "arabic": "هوكي",
+      "german": "Hockey",
+      "category": "sports",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Hockey_Player.jpg"
+    },
+    {
+      "english": "tennis",
+      "spanish": "tenis",
+      "french": "tennis",
+      "arabic": "تنس",
+      "german": "Tennis",
+      "category": "sports",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Tennis_Racket_and_Balls.jpg"
+    },
+    {
+      "english": "swimming",
+      "spanish": "natación",
+      "french": "natation",
+      "arabic": "سباحة",
+      "german": "Schwimmen",
+      "category": "sports",
+      "difficulty": "common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Swimming_BC.jpg"
+    },
+    {
+      "english": "boxing",
+      "spanish": "boxeo",
+      "french": "boxe",
+      "arabic": "ملاكمة",
+      "german": "Boxen",
+      "category": "sports",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Boxing_Alex_Saucedo.jpg"
+    },
+    {
+      "english": "cycling",
+      "spanish": "ciclismo",
+      "french": "cyclisme",
+      "arabic": "ركوب الدراجات",
+      "german": "Radfahren",
+      "category": "sports",
+      "difficulty": "uncommon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Cycling_race_1.jpg"
+    },
+    {
+      "english": "doctor",
+      "spanish": "médico",
+      "french": "médecin",
+      "arabic": "طبيب",
+      "german": "Arzt",
+      "category": "professions",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Doctor_writing_on_a_medical_chart.jpg"
+    },
+    {
+      "english": "teacher",
+      "spanish": "maestro",
+      "french": "professeur",
+      "arabic": "معلم",
+      "german": "Lehrer",
+      "category": "professions",
+      "difficulty": "very common",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Teacher_in_Class.jpg"
+    }
+  ]
