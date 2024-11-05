@@ -1,4 +1,5 @@
 
+import './css/index.css'
 import Card from './components/Card'
 import './css/index.css'
 import { Routes, Route } from "react-router-dom";
@@ -15,6 +16,9 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import ForgotPassword from "./components/ForgotPassword"
 import UpdateProfile from "./components/UpdateProfile";
+import Collections from './pages/Collections';
+import AddWords from './components/AddWords';
+import Category from './pages/Category';
 
 function App() {
   return (
@@ -28,10 +32,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/collections" element={<Collections />} />
+          <Route path="/collections/:category" element={<Category />} />
 
           <Route path="/update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>} />
           <Route path="/flashcards" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
+          <Route path="/add-word-form" element={ <PrivateRoute><AddWords /></PrivateRoute> } />
         </Routes>
       </AuthProvider>
       <Footer />

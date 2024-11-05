@@ -4,6 +4,7 @@ import OptionButton from '../components/OptionButton';
 import axios from 'axios';
 import { transformObjectToArray } from '../assets/utils.jsx';
 import { shuffleArray } from '../assets/utils.jsx';
+import Collections from './Collections.jsx';
 
 function Flashcards() {
     const [wordsData, setWordsData] = useState(null);
@@ -123,6 +124,7 @@ function Flashcards() {
                     />
                 ))}
             </div>
+            <Collections />
         </div>
     );
 }
