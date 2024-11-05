@@ -1,3 +1,4 @@
+// WordsContext.js
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { transformObjectToArray } from "../assets/utils.jsx";
@@ -30,11 +31,33 @@ function WordsProvider({ children }) {
     };
   }
 
+  // Add a new word to Firebase
+  function addWord(newWord) {
+    return axios.post(url, newWord)
+      .then((response) => {
+        setWordsData((prevWords) => [...prevWords, newWord]);
+      })
+      .catch(e => console.error("Error adding word:", e));
+  }
+
+  //delete word from firebase
+  const deleteWord = (wordId) => {
+    axios
+      .delete(`https://flash-language-5bfe9-default-rtdb.europe-west1.firebasedatabase.app/words/${wordId}.json`)
+      .then(() => {
+        // Update state to remove the word locally
+        setWordsData((prevWords) => prevWords.filter((word) => word.id !== wordId));
+      })
+      .catch((e) => console.error("Error deleting word:", e));
+  };
+
   return (
     <WordsContext.Provider
       value={{
         wordsData,
         getCollections,
+        addWord,
+        deleteWord,
       }}
     >
       {children}

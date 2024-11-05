@@ -1,7 +1,7 @@
 
 import './css/index.css'
 import Card from './components/Card'
-import './css/css/index.css'
+import './css/index.css'
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
@@ -33,7 +33,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/collections" element={<Collections />} />
-          <Route path="/collections/:category" element={<Category />} />
+          <Route path="/collections/:categoryName" element={<Category />} />
 
           <Route path="/update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>} />

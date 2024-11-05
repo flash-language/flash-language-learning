@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
 import Card from './Card';
 
 const ListCards = (props) => {
