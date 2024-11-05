@@ -12,7 +12,7 @@ const ListCards = (props) => {
 
     return (
         <div>
-            <Card word={props.currentWord} />
+            <Card word={props.currentWord} showAnswer={props.showAnswer}/>
             <button 
                 onClick={props.handleNextCard} 
                 style={{ display: 'block', margin: '20px auto', padding: '10px 20px' }}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = ({ word }) => {
+const Card = ({ word, showAnswer }) => {
     return (
         <div style={{ border: '1px solid #ddd', padding: '20px', textAlign: 'center', margin: 'auto', width: '300px' }}>
             <h2>{word.english}</h2>
@@ -11,7 +11,7 @@ const Card = ({ word }) => {
                     style={{ width: '100%', height: '150px', objectFit: 'cover', marginBottom: '20px' }} 
                 />
             </div>
-            <p>{word.french}</p>
+            <p style={{ color: 'green'}}>{showAnswer && word.french}</p>
         </div>
     );
 };
