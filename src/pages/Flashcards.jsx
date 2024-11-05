@@ -5,6 +5,7 @@ import axios from 'axios';
 import { transformObjectToArray } from '../assets/utils.jsx';
 import { shuffleArray } from '../assets/utils.jsx';
 import Collections from './Collections.jsx';
+import {logEvent} from '../assets/loggingUtils.jsx';
 
 function Flashcards() {
     const [wordsData, setWordsData] = useState(null);
@@ -21,7 +22,8 @@ function Flashcards() {
         axios.get(url)
             .then((response) => {
                 const dataArr = transformObjectToArray(response.data);
-                setWordsData(dataArr);         
+                setWordsData(dataArr);
+                logEvent("game_start", { score, currentWordId: dataArr[0]?.id });         
             })
             .catch((e) => console.error('Error fetching data:', e));
     }, []);
@@ -45,6 +47,7 @@ function Flashcards() {
     useEffect(()=>{
         if(timeLeft === 0){
             alert(`Time's up ! Your score is ${score}`)
+            logEvent("game_end", { score, currentWordId: wordsData[currentIndex]?.id });
             resetGame();
         }
     }, [timeLeft])
@@ -67,17 +70,23 @@ function Flashcards() {
 
     const handleGuess = (guess) => {
         if (wordsData.length > 0 ) {
-            if (guess === wordsData[currentIndex].french) {
+            const isCorrect = guess === wordsData[currentIndex].french;
+            const currentWordId = wordsData[currentIndex]?.id;
+
+            if (isCorrect) {
                 let points = 3 - tries;
                 setScore((prevScore)=> prevScore + points)
+                logEvent("click", { isCorrect, score, currentWordId });
                 const nextIndex = (currentIndex + 1) % wordsData.length;
                 setCurrentIndex(nextIndex);
             } else {
                 if(tries<2){
                     setTries(tries +1)
                     alert(`Incorrect ! You have ${2-tries} tries left :)`)
+                    logEvent("click", { isCorrect, score, currentWordId });
                 } else {
                     setShowAnswer(true);
+                    logEvent("click", { isCorrect, score, currentWordId });
                     setTimeout(() => {
                         return handleNextCard()
                     }, 3000); // what a penalty of 3 seconds hihi :D
