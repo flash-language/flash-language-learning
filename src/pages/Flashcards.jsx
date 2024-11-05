@@ -12,8 +12,9 @@ function Flashcards() {
     const [options, setOptions] = useState([]);
     const [score, setScore] = useState(0);
     const [tries,setTries] = useState(0);
-    const [timeLeft, setTimeLeft] = useState(120);
-    
+    const [timeLeft, setTimeLeft] = useState(60);
+    const [showAnswer, setShowAnswer] = useState(false);
+
     const url = "https://flash-language-5bfe9-default-rtdb.europe-west1.firebasedatabase.app/words.json";
 
     useEffect(() => {
@@ -59,7 +60,8 @@ function Flashcards() {
                     .slice(0, 2)
             ]);
             setOptions(optionsArray);
-            setTries(0); 
+            setTries(0);
+            setShowAnswer(false); 
         }
     };
 
@@ -75,8 +77,10 @@ function Flashcards() {
                     setTries(tries +1)
                     alert(`Incorrect ! You have ${2-tries} tries left :)`)
                 } else {
-                    alert(`Out of tries ! Moving to next word`)
-                    setCurrentIndex((currentIndex + 1) % wordsData.length)
+                    setShowAnswer(true);
+                    setTimeout(() => {
+                        return handleNextCard()
+                    }, 3000); // what a penalty of 3 seconds hihi :D
                 }
             }        
         }
@@ -84,6 +88,8 @@ function Flashcards() {
 
     const handleNextCard = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % wordsData.length);
+        setTries(0);
+        setShowAnswer(false);
     };
 
     const resetGame = () => {
@@ -91,6 +97,7 @@ function Flashcards() {
         setCurrentIndex(0);
         setTimeLeft(120);
         setTries(0);
+        setShowAnswer(false);
     };
 
     if (!wordsData) {
@@ -102,7 +109,12 @@ function Flashcards() {
             <h1>Guess the Word!</h1>
             <p>Time left: {Math.floor(timeLeft/60)}:{timeLeft%60<10 ? '0' : ''}{timeLeft%60}</p>
             <p>Score: {score}</p>
-            <ListCards words={wordsData} currentWord={wordsData[currentIndex]} handleNextCard={handleNextCard}/>
+            <ListCards
+                words={wordsData}
+                currentWord={wordsData[currentIndex]}
+                handleNextCard={handleNextCard}
+                showAnswer={showAnswer}
+            />
             <div>
                 {options.map((option, index) => (
                     <OptionButton
