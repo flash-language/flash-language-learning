@@ -9,8 +9,8 @@ export default function AddWords() {
 
   // Local state for form inputs
   const [english, setEnglish] = useState("");
-  const [category, setCategory] = useState("");
-  const [difficulty, setDifficulty] = useState("");
+  const [category, setCategory] = useState("vegetables");
+  const [difficulty, setDifficulty] = useState("common");
   const [french, setFrench] = useState("");
   const [german, setGerman] = useState("");
   const [spanish, setSpanish] = useState("");
@@ -20,6 +20,7 @@ export default function AddWords() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newWord = { english, category, difficulty, french, german, spanish, arabic };
+    console.log(newWord);
 
     // Call addWord from context
     addWord(newWord).then(() => {
