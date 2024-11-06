@@ -11,11 +11,11 @@ const ListCards = (props) => {
     return (
         <div>
             <WordCard word={props.currentWord} showAnswer={props.showAnswer}/>
-            <button 
+            {/*<button 
                 onClick={props.handleNextCard} 
                 style={{ display: 'block', margin: '20px auto', padding: '10px 20px' }}
             >Next Card
-            </button>
+            </button>*/}
         </div>
     );
 };

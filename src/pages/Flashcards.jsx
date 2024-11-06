@@ -5,6 +5,7 @@ import { shuffleArray } from '../assets/utils.jsx';
 import { logEvent } from '../assets/loggingUtils.jsx';
 import { WordsContext } from '../context/WordsContext.jsx';
 import { useParams } from 'react-router-dom';
+import { Button, Card } from "flowbite-react";
 
 function Flashcards() {
     const { categoryName } = useParams();
@@ -101,24 +102,40 @@ function Flashcards() {
     }
 
     return (
-        <div>
-            <h1>Guess the Word!</h1>
-            <p>Time left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</p>
-            <p>Score: {score}</p>
+        <div className="flex flex-col items-center justify-center px-4">
+            <h1 className="text-2xl font-bold mb-6 text-center">Guess the Word!</h1>
+
+            <div className='flex flex-row space-x-24 m-7'>
+
+                <h5 className="text-2xl font-bold tracking-tight text-gray-500 dark:text-white text-center">
+                    {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}
+                </h5>
+
+                <h5 className="text-2xl font-bold tracking-tight text-gray-500 dark:text-white text-center">
+                    Score: {score}
+                </h5>
+
+            </div>
+
             <ListCards
                 words={selectedCategoryWords}
                 currentWord={selectedCategoryWords[currentIndex]}
                 handleNextCard={handleNextCard}
                 showAnswer={showAnswer}
             />
-            <div>
-                {options.map((option, index) => (
-                    <OptionButton
-                        key={index}
-                        text={option}
-                        onClick={() => handleGuess(option)}
-                    />
-                ))}
+
+            <div className="w-full max-w-md flex justify-center m-7">
+                <Button.Group className="max-w-sm content-center">
+                    {options.map((option, index) => (
+                        <Button color='gray'>
+                            <OptionButton
+                                key={index}
+                                text={option}
+                                onClick={() => handleGuess(option)}
+                            />
+                        </Button>
+                    ))}
+                </Button.Group>
             </div>
         </div>
     );

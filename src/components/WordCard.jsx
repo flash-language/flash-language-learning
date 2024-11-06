@@ -6,18 +6,17 @@ const WordCard = ({ word, showAnswer }) => {
     return (
 
         <>
-
             <Card
-                className="max-w-sm"
+                className="w-64 h-80 bg-white rounded-lg shadow-md overflow-hidden flex flex-col items-center p-4"
                 imgAlt={word.english}
                 imgSrc={word.imageUrl}
             >
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {word.english}
+                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                    {word.english}
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <h5 className="text-2xl font-bold text-green-500 dark:text-green-400 text-center">
                     {showAnswer && word.french}
-                </p>
+                </h5>
             </Card>
 
         </>
