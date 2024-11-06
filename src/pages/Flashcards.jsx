@@ -7,7 +7,8 @@ import { WordsContext } from '../context/WordsContext.jsx';
 import { useParams } from 'react-router-dom';
 
 function Flashcards() {
-    const { category } = useParams();
+    const { categoryName } = useParams();
+    console.log(categoryName)
     const { wordsData, getWordsByCategory } = useContext(WordsContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [options, setOptions] = useState([]);
@@ -16,14 +17,14 @@ function Flashcards() {
     const [timeLeft, setTimeLeft] = useState(60);
     const [showAnswer, setShowAnswer] = useState(false);
 
-    // use all words if no category is provided
-    const selectedCategoryWords = category ? getWordsByCategory(category) : wordsData;
+    // Use all words if no category is provided
+    const selectedCategoryWords = categoryName ? getWordsByCategory(categoryName) : wordsData;
 
     useEffect(() => {
         if (selectedCategoryWords && selectedCategoryWords.length > 0) {
             generateOptions(selectedCategoryWords, currentIndex);
         }
-    }, [selectedCategoryWords, currentIndex]);
+    }, [currentIndex]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -90,7 +91,7 @@ function Flashcards() {
     const resetGame = () => {
         setScore(0);
         setCurrentIndex(0);
-        setTimeLeft(120);
+        setTimeLeft(60);
         setTries(0);
         setShowAnswer(false);
     };

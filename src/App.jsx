@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <NavigationBar className="navigationbar"/>
-      <SideBar className="sidebar"/>
+      <SideBar/>
       <AuthProvider>
         <Routes>
           <Route path="/about" element={<About />} />
@@ -31,7 +31,6 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/collections/:categoryName" element={<Category />} />
-
           <Route path="/update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>} />
           <Route path="/flashcards/:categoryName?" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
