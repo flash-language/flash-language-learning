@@ -26,7 +26,7 @@ function Flashcards() {
         if (selectedCategoryWords && selectedCategoryWords.length > 0) {
             generateOptions(selectedCategoryWords, currentIndex);
         }
-    }, [selectedCategoryWords, currentIndex]);
+    }, [currentIndex]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -93,7 +93,7 @@ function Flashcards() {
     const resetGame = () => {
         setScore(0);
         setCurrentIndex(0);
-        setTimeLeft(120);
+        setTimeLeft(60);
         setTries(0);
         setShowAnswer(false);
     };
