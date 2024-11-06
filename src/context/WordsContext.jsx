@@ -32,14 +32,21 @@ function WordsProvider({ children }) {
     };
   }
 
-  function getWordsByCategory() {
-    if (!selectedCategory) return wordsData;
-    return wordsData ? wordsData.filter((word) => word.category === selectedCategory) : [];
+  function getWordsByCategory(category = selectedCategory) {
+    if (!category) return getRandomWords(); 
+    return wordsData ? wordsData.filter((word) => word.category === category) : [];
   }
 
   function setCategory(category) {
-    setSelectedCategory(category);  // Update selected category
+    setSelectedCategory(category);  
   }
+
+  function getRandomWords(count = 20) {
+    if (!wordsData) return []; 
+    const shuffled = [...wordsData].sort(() => 0.5 - Math.random()); 
+    return shuffled.slice(0, count);
+  }
+
 
   // Add a new word to Firebase
   async function addWord(newWord) {
@@ -72,6 +79,7 @@ function WordsProvider({ children }) {
         getWordsByCategory,
         addWord,
         deleteWord,
+        getRandomWords,
       }}
     >
       {children}

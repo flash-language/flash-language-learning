@@ -8,16 +8,19 @@ import { useParams } from 'react-router-dom';
 
 function Flashcards() {
     const { category } = useParams();
-    const { wordsData, getWordsByCategory } = useContext(WordsContext);
+    const { getRandomWords, getWordsByCategory } = useContext(WordsContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [options, setOptions] = useState([]);
     const [score, setScore] = useState(0);
     const [tries, setTries] = useState(0);
     const [timeLeft, setTimeLeft] = useState(60);
     const [showAnswer, setShowAnswer] = useState(false);
+    const [selectedCategoryWords, setSelectedCategoryWords] = useState([]);
 
-    // use all words if no category is provided
-    const selectedCategoryWords = category ? getWordsByCategory(category) : wordsData;
+    useEffect(() => {
+        const words = category ? getWordsByCategory(category) : getRandomWords();
+        setSelectedCategoryWords(words);
+    }, [category, getWordsByCategory, getRandomWords]);
 
     useEffect(() => {
         if (selectedCategoryWords && selectedCategoryWords.length > 0) {
