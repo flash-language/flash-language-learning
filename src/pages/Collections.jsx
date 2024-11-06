@@ -9,7 +9,7 @@ function Collections({ onSelectCategory }) {
 
   const handleCategorySelection = (category) => {
     setCategory(category); 
-    navigate('/flashcards'); 
+    navigate(`/flashcards/${category}`); 
   };
 
   const handleViewCategory = (category) => {

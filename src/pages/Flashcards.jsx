@@ -5,8 +5,10 @@ import { shuffleArray } from '../assets/utils.jsx';
 import Collections from './Collections.jsx';
 import {logEvent} from '../assets/loggingUtils.jsx';
 import { WordsContext } from '../context/WordsContext.jsx';
+import { useParams } from 'react-router-dom';
 
 function Flashcards() {
+    const { category } = useParams();
     const { wordsData, selectedCategory, getWordsByCategory } = useContext(WordsContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [options, setOptions] = useState([]);
@@ -14,7 +16,7 @@ function Flashcards() {
     const [tries,setTries] = useState(0);
     const [timeLeft, setTimeLeft] = useState(60);
     const [showAnswer, setShowAnswer] = useState(false);
-    const selectedCategoryWords = getWordsByCategory();
+    const selectedCategoryWords = getWordsByCategory(category);
 
     useEffect(() => {
         if (selectedCategoryWords && selectedCategoryWords.length > 0) {
@@ -121,7 +123,6 @@ function Flashcards() {
                     />
                 ))}
             </div>
-            <Collections />
         </div>
     );
 }

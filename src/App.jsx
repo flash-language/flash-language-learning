@@ -37,7 +37,7 @@ function App() {
 
           <Route path="/update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>} />
-          <Route path="/flashcards" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
+          <Route path="/flashcards/:categoryName" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
           <Route path="/add-word-form" element={ <PrivateRoute><AddWords /></PrivateRoute> } />
         </Routes>
       </AuthProvider>
