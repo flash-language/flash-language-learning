@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import "../css/auth.css";
+import { Button, Card, Label, TextInput } from "flowbite-react";
+
+
 
 export default function Signup() {
   const emailRef = useRef();
@@ -33,57 +35,34 @@ export default function Signup() {
 
     return (
       <>
-        <div className="auth-container">
-      <div className="auth-form">
-        <h2 className="auth-title">Sign Up</h2>
-
         {error && <div className="error-message">{error}</div>}
-        
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              ref={emailRef}
-              id="email"
-              required
-            />
+      <Card className="max-w-sm">
+      <h2 className="auth-title">Sign Up</h2>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Your email" />
           </div>
-
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              ref={passwordRef}
-              id="password"
-              required
-            />
+          <TextInput id="email1" type="email" placeholder="name@flowbite.com" required ref={emailRef}/>
+        </div>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="password1" value="Your password" />
           </div>
-
-          <div className="form-group">
-            <label htmlFor="password-confirm">Confirm Password</label>
-            <input
-              type="password"
-              ref={passwordConfirmRef}
-              id="password-confirm"
-              required
-            />
+          <TextInput id="password1" type="password" required ref={passwordRef} />
+        </div>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="password-confirm" value="Confirm Password" />
           </div>
-
-          <button
-            disabled={loading}
-            type="submit"
-            className="submit-button"
-          >
-            Sign Up
-          </button>
-        </form>
-      </div>
-
+          <TextInput id="password-confirm" type="password" required ref={passwordConfirmRef} />
+        </div>
+        <Button disabled={loading} type="submit">Submit</Button>
       <div className="login-link">
-        Already have an account? <Link to="/login">Log In</Link>
+        Already have an account? <Link to="/login">Login</Link>
       </div>
-    </div>
+      </form>
+    </Card>
       </>
     );
   }

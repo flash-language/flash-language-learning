@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import "../css/auth.css";
+import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
 
 export default function Login() {
   const emailRef = useRef();
@@ -28,50 +28,35 @@ export default function Login() {
 
     return (
       <>
-        <div className="auth-container">
-      <div className="auth-form">
-        <h2 className="auth-title">Log In</h2>
-        
-        {error && <div className="error-message">{error}</div>}
-        
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              ref={emailRef}
-              id="email"
-              required
-            />
+      {error && <div className="error-message">{error}</div>}
+      <Card className="max-w-sm">
+      <h2 className="auth-title">Login</h2>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Your email" />
           </div>
-          
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              ref={passwordRef}
-              id="password"
-              required
-            />
+          <TextInput id="email1" type="email" placeholder="name@flowbite.com" required ref={emailRef}/>
+        </div>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="password1" value="Your password" />
           </div>
-          
-          <button
-            disabled={loading}
-            type="submit"
-            className="submit-button"
-          >
-            Log In
-          </button>
-        </form>
+          <TextInput id="password1" type="password" required ref={passwordRef} />
+        </div>
+        <div className="flex items-center gap-2">
+          <Checkbox id="remember" />
+          <Label htmlFor="remember">Remember me</Label>
+        </div>
+        <Button disabled={loading} type="submit">Submit</Button>
         <div>
             <Link to="/forgot-password">Forgot password?</Link>
         </div>
-      </div>
-      
       <div className="login-link">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
-    </div>
+      </form>
+    </Card>
       </>
     );
   }
