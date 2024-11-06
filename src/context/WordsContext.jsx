@@ -7,6 +7,7 @@ const WordsContext = createContext();
 
 function WordsProvider({ children }) {
   const [wordsData, setWordsData] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null); 
   const url = "https://flash-language-5bfe9-default-rtdb.europe-west1.firebasedatabase.app/words.json";
 
   useEffect(() => {
@@ -31,13 +32,23 @@ function WordsProvider({ children }) {
     };
   }
 
+  function getWordsByCategory() {
+    if (!selectedCategory) return wordsData;
+    return wordsData ? wordsData.filter((word) => word.category === selectedCategory) : [];
+  }
+
+  function setCategory(category) {
+    setSelectedCategory(category);  // Update selected category
+  }
+
   // Add a new word to Firebase
-  function addWord(newWord) {
-    return axios.post(url, newWord)
-      .then((response) => {
-        setWordsData((prevWords) => [...prevWords, newWord]);
-      })
-      .catch(e => console.error("Error adding word:", e));
+  async function addWord(newWord) {
+    try {
+      const response = await axios.post(url, newWord);
+      setWordsData((prevWords) => [...prevWords, newWord]);
+    } catch (e) {
+      return console.error("Error adding word:", e);
+    }
   }
 
   //delete word from firebase
@@ -55,7 +66,10 @@ function WordsProvider({ children }) {
     <WordsContext.Provider
       value={{
         wordsData,
+        selectedCategory,
         getCollections,
+        setCategory,
+        getWordsByCategory,
         addWord,
         deleteWord,
       }}
