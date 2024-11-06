@@ -1,38 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ListCards from '../components/ListCards';
 import OptionButton from '../components/OptionButton';
-import axios from 'axios';
-import { transformObjectToArray } from '../assets/utils.jsx';
 import { shuffleArray } from '../assets/utils.jsx';
 import Collections from './Collections.jsx';
 import {logEvent} from '../assets/loggingUtils.jsx';
+import { WordsContext } from '../context/WordsContext.jsx';
 
 function Flashcards() {
-    const [wordsData, setWordsData] = useState(null);
+    const { wordsData, selectedCategory, getWordsByCategory } = useContext(WordsContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [options, setOptions] = useState([]);
     const [score, setScore] = useState(0);
     const [tries,setTries] = useState(0);
     const [timeLeft, setTimeLeft] = useState(60);
     const [showAnswer, setShowAnswer] = useState(false);
-
-    const url = "https://flash-language-5bfe9-default-rtdb.europe-west1.firebasedatabase.app/words.json";
-
-    useEffect(() => {
-        axios.get(url)
-            .then((response) => {
-                const dataArr = transformObjectToArray(response.data);
-                setWordsData(dataArr);
-                logEvent("game_start", { score, currentWordId: dataArr[0]?.id });         
-            })
-            .catch((e) => console.error('Error fetching data:', e));
-    }, []);
+    const selectedCategoryWords = getWordsByCategory();
 
     useEffect(() => {
-        if (wordsData && wordsData.length > 0) {
+        if (selectedCategoryWords && selectedCategoryWords.length > 0) {
             generateOptions(wordsData, currentIndex);
         }
-    }, [wordsData, currentIndex]);
+    }, [wordsData, selectedCategory, currentIndex]);
 
     useEffect(()=>{
         const timer = setInterval(() => {
@@ -47,17 +35,17 @@ function Flashcards() {
     useEffect(()=>{
         if(timeLeft === 0){
             alert(`Time's up ! Your score is ${score}`)
-            logEvent("game_end", { score, currentWordId: wordsData[currentIndex]?.id });
+            logEvent("game_end", { score, currentWordId: selectedCategoryWords[currentIndex]?.id });
             resetGame();
         }
     }, [timeLeft])
 
-    const generateOptions = (dataArr, index) => {
-        if (dataArr && dataArr.length > 0) {
-            const currentWord = dataArr[index];
+    const generateOptions = (wordsData, index) => {
+        if (wordsData && wordsData.length > 0 && selectedCategoryWords.length > 0) {
+            const currentWord = selectedCategoryWords[index];
             const optionsArray = shuffleArray([
                 currentWord.french,
-                ...dataArr
+                ...wordsData
                     .filter((word, i) => i !== index)
                     .map(word => word.french)
                     .slice(0, 2)
@@ -69,15 +57,15 @@ function Flashcards() {
     };
 
     const handleGuess = (guess) => {
-        if (wordsData.length > 0 ) {
-            const isCorrect = guess === wordsData[currentIndex].french;
-            const currentWordId = wordsData[currentIndex]?.id;
+        if (selectedCategoryWords.length > 0 ) {
+            const isCorrect = guess === selectedCategoryWords[currentIndex].french;
+            const currentWordId = selectedCategoryWords[currentIndex]?.id;
 
             if (isCorrect) {
                 let points = 3 - tries;
                 setScore((prevScore)=> prevScore + points)
                 logEvent("click", { isCorrect, score, currentWordId });
-                const nextIndex = (currentIndex + 1) % wordsData.length;
+                const nextIndex = (currentIndex + 1) % selectedCategoryWords.length;
                 setCurrentIndex(nextIndex);
             } else {
                 if(tries<2){
@@ -96,7 +84,7 @@ function Flashcards() {
     };
 
     const handleNextCard = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % wordsData.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % selectedCategoryWords.length);
         setTries(0);
         setShowAnswer(false);
     };
@@ -109,7 +97,7 @@ function Flashcards() {
         setShowAnswer(false);
     };
 
-    if (!wordsData) {
+    if (!selectedCategoryWords) {
         return <div>Loading...</div>;
     }
 
@@ -119,8 +107,8 @@ function Flashcards() {
             <p>Time left: {Math.floor(timeLeft/60)}:{timeLeft%60<10 ? '0' : ''}{timeLeft%60}</p>
             <p>Score: {score}</p>
             <ListCards
-                words={wordsData}
-                currentWord={wordsData[currentIndex]}
+                words={selectedCategoryWords}
+                currentWord={selectedCategoryWords[currentIndex]}
                 handleNextCard={handleNextCard}
                 showAnswer={showAnswer}
             />
