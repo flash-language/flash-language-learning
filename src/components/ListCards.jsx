@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import Card from './Card';
+import WordCard from './wordCard';
 
 const ListCards = (props) => {
 
@@ -12,7 +12,7 @@ const ListCards = (props) => {
 
     return (
         <div>
-            <Card word={props.currentWord} showAnswer={props.showAnswer}/>
+            <WordCard word={props.currentWord} showAnswer={props.showAnswer}/>
             <button 
                 onClick={props.handleNextCard} 
                 style={{ display: 'block', margin: '20px auto', padding: '10px 20px' }}

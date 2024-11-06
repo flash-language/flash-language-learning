@@ -1,6 +1,3 @@
-
-import './css/index.css'
-import Card from './components/Card'
 import './css/index.css'
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
@@ -8,8 +5,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import Flashcards from "./pages/Flashcards";
 import Homepage from "./pages/Homepage";
 import NotFoundPage from "./pages/NotFoundPage";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import NavigationBar from "./components/NavigationBar";
+import SideBar from "./components/SideBar";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Signup from "./components/Signup";
@@ -23,8 +20,8 @@ import Category from './pages/Category';
 function App() {
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      <NavigationBar />
+      <SideBar />
       <AuthProvider>
         <Routes>
           <Route path="/about" element={<About />} />
