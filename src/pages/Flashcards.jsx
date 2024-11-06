@@ -8,18 +8,20 @@ import { useParams } from 'react-router-dom';
 import { Button, Card } from "flowbite-react";
 
 function Flashcards() {
-    const { categoryName } = useParams();
-    console.log(categoryName)
-    const { wordsData, getWordsByCategory } = useContext(WordsContext);
+    const { category } = useParams();
+    const { getRandomWords, getWordsByCategory } = useContext(WordsContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [options, setOptions] = useState([]);
     const [score, setScore] = useState(0);
     const [tries, setTries] = useState(0);
     const [timeLeft, setTimeLeft] = useState(60);
     const [showAnswer, setShowAnswer] = useState(false);
+    const [selectedCategoryWords, setSelectedCategoryWords] = useState([]);
 
-    // Use all words if no category is provided
-    const selectedCategoryWords = categoryName ? getWordsByCategory(categoryName) : wordsData;
+    useEffect(() => {
+        const words = category ? getWordsByCategory(category) : getRandomWords();
+        setSelectedCategoryWords(words);
+    }, [category, getWordsByCategory, getRandomWords]);
 
     useEffect(() => {
         if (selectedCategoryWords && selectedCategoryWords.length > 0) {
