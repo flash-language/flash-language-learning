@@ -1,6 +1,3 @@
-
-import './css/index.css'
-import Card from './components/Card'
 import './css/index.css'
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
@@ -8,9 +5,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import Flashcards from "./pages/Flashcards";
 import Homepage from "./pages/Homepage";
 import NotFoundPage from "./pages/NotFoundPage";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import Footer from "./components/Footer";
+import NavigationBar from "./components/NavigationBar";
+import SideBar from "./components/SideBar";
 import About from "./pages/About";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -19,12 +15,13 @@ import UpdateProfile from "./components/UpdateProfile";
 import Collections from './pages/Collections';
 import AddWords from './components/AddWords';
 import Category from './pages/Category';
+import BottomPage from './components/BottomPage';
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      <NavigationBar className="navigationbar"/>
+      <SideBar className="sidebar"/>
       <AuthProvider>
         <Routes>
           <Route path="/about" element={<About />} />
@@ -37,11 +34,11 @@ function App() {
 
           <Route path="/update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>} />
-          <Route path="/flashcards/:categoryName" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
+          <Route path="/flashcards/:categoryName?" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
           <Route path="/add-word-form" element={ <PrivateRoute><AddWords /></PrivateRoute> } />
         </Routes>
       </AuthProvider>
-      <Footer />
+      <BottomPage className="bottompage"/>
      
     </>
   );

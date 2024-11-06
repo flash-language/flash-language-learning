@@ -2,86 +2,82 @@ import React, { useState, useEffect, useContext } from 'react';
 import ListCards from '../components/ListCards';
 import OptionButton from '../components/OptionButton';
 import { shuffleArray } from '../assets/utils.jsx';
-import Collections from './Collections.jsx';
-import {logEvent} from '../assets/loggingUtils.jsx';
+import { logEvent } from '../assets/loggingUtils.jsx';
 import { WordsContext } from '../context/WordsContext.jsx';
 import { useParams } from 'react-router-dom';
 
 function Flashcards() {
     const { category } = useParams();
-    const { wordsData, selectedCategory, getWordsByCategory } = useContext(WordsContext);
+    const { wordsData, getWordsByCategory } = useContext(WordsContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [options, setOptions] = useState([]);
     const [score, setScore] = useState(0);
-    const [tries,setTries] = useState(0);
+    const [tries, setTries] = useState(0);
     const [timeLeft, setTimeLeft] = useState(60);
     const [showAnswer, setShowAnswer] = useState(false);
-    const selectedCategoryWords = getWordsByCategory(category);
+
+    // use all words if no category is provided
+    const selectedCategoryWords = category ? getWordsByCategory(category) : wordsData;
 
     useEffect(() => {
         if (selectedCategoryWords && selectedCategoryWords.length > 0) {
-            generateOptions(wordsData, currentIndex);
+            generateOptions(selectedCategoryWords, currentIndex);
         }
-    }, [wordsData, selectedCategory, currentIndex]);
+    }, [selectedCategoryWords, currentIndex]);
 
-    useEffect(()=>{
+    useEffect(() => {
         const timer = setInterval(() => {
-            setTimeLeft((prevTime)=>{
-                return prevTime > 0 ? prevTime - 1 : 0
-            })
-            console.log(timeLeft)
+            setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
         }, 1000);
         return () => clearInterval(timer);
-    },[]);
+    }, []);
 
-    useEffect(()=>{
-        if(timeLeft === 0){
-            alert(`Time's up ! Your score is ${score}`)
+    useEffect(() => {
+        if (timeLeft === 0) {
+            alert(`Time's up! Your score is ${score}`);
             logEvent("game_end", { score, currentWordId: selectedCategoryWords[currentIndex]?.id });
             resetGame();
         }
-    }, [timeLeft])
+    }, [timeLeft]);
 
-    const generateOptions = (wordsData, index) => {
-        if (wordsData && wordsData.length > 0 && selectedCategoryWords.length > 0) {
-            const currentWord = selectedCategoryWords[index];
+    const generateOptions = (wordsList, index) => {
+        if (wordsList && wordsList.length > 0) {
+            const currentWord = wordsList[index];
             const optionsArray = shuffleArray([
                 currentWord.french,
-                ...wordsData
-                    .filter((word, i) => i !== index)
+                ...wordsList
+                    .filter((_, i) => i !== index)
                     .map(word => word.french)
                     .slice(0, 2)
             ]);
             setOptions(optionsArray);
             setTries(0);
-            setShowAnswer(false); 
+            setShowAnswer(false);
         }
     };
 
     const handleGuess = (guess) => {
-        if (selectedCategoryWords.length > 0 ) {
+        if (selectedCategoryWords.length > 0) {
             const isCorrect = guess === selectedCategoryWords[currentIndex].french;
             const currentWordId = selectedCategoryWords[currentIndex]?.id;
 
             if (isCorrect) {
                 let points = 3 - tries;
-                setScore((prevScore)=> prevScore + points)
+                setScore((prevScore) => prevScore + points);
                 logEvent("click", { isCorrect, score, currentWordId });
                 const nextIndex = (currentIndex + 1) % selectedCategoryWords.length;
                 setCurrentIndex(nextIndex);
             } else {
-                if(tries<2){
-                    setTries(tries +1)
-                    alert(`Incorrect ! You have ${2-tries} tries left :)`)
+                if (tries < 2) {
+                    setTries(tries + 1);
+                    alert(`Incorrect! You have ${2 - tries} tries left :)`);
                     logEvent("click", { isCorrect, score, currentWordId });
                 } else {
                     setShowAnswer(true);
                     logEvent("click", { isCorrect, score, currentWordId });
-                    setTimeout(() => {
-                        return handleNextCard()
-                    }, 3000); // what a penalty of 3 seconds hihi :D
+                    setTimeout(handleNextCard, 3000); // penalty of 3 seconds
                 }
-            }        
+            }
         }
     };
 
@@ -106,7 +102,7 @@ function Flashcards() {
     return (
         <div>
             <h1>Guess the Word!</h1>
-            <p>Time left: {Math.floor(timeLeft/60)}:{timeLeft%60<10 ? '0' : ''}{timeLeft%60}</p>
+            <p>Time left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</p>
             <p>Score: {score}</p>
             <ListCards
                 words={selectedCategoryWords}
