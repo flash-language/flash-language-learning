@@ -14,8 +14,7 @@ const ListCards = (props) => {
             <button 
                 onClick={props.handleNextCard} 
                 style={{ display: 'block', margin: '20px auto', padding: '10px 20px' }}
-            >
-                Next Card
+            >Next Card
             </button>
         </div>
     );

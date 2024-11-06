@@ -7,7 +7,6 @@ import Homepage from "./pages/Homepage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NavigationBar from "./components/NavigationBar";
 import SideBar from "./components/SideBar";
-import Footer from "./components/Footer";
 import About from "./pages/About";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -16,12 +15,13 @@ import UpdateProfile from "./components/UpdateProfile";
 import Collections from './pages/Collections';
 import AddWords from './components/AddWords';
 import Category from './pages/Category';
+import BottomPage from './components/BottomPage';
 
 function App() {
   return (
     <>
-      <NavigationBar />
-      <SideBar />
+      <NavigationBar className="navigationbar"/>
+      <SideBar className="sidebar"/>
       <AuthProvider>
         <Routes>
           <Route path="/about" element={<About />} />
@@ -34,11 +34,11 @@ function App() {
 
           <Route path="/update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>} />
-          <Route path="/flashcards/:categoryName" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
+          <Route path="/flashcards/:categoryName?" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
           <Route path="/add-word-form" element={ <PrivateRoute><AddWords /></PrivateRoute> } />
         </Routes>
       </AuthProvider>
-      <Footer />
+      <BottomPage className="bottompage"/>
      
     </>
   );
