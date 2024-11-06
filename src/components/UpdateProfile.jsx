@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import "../css/auth.css";
+import { Button, Card, Label, TextInput } from "flowbite-react";
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -42,54 +42,53 @@ export default function UpdateProfile() {
 
   return (
     <>
-      <div className="auth-container">
-        <div className="auth-form">
-          <h2 className="auth-title">Update Profile</h2>
-
-          {error && <div className="error-message">{error}</div>}
-
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                ref={emailRef}
-                id="email"
-                required
-                defaultValue={currentUser.email}
-              />
+      {error && <div className="error-message">{error}</div>}
+      <Card className="max-w-sm">
+        <h2 className="auth-title">Update Profile</h2>
+        <h2 className="auth-title">Sign Up</h2>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="email1" value="Your email" />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                ref={passwordRef}
-                id="password"
-                placeholder="Leave blank to keep the same"
-              />
+            <TextInput
+              id="email1"
+              type="email"
+              defaultValue={currentUser.email}
+              required
+              ref={emailRef}
+            />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="password1" value="New password" />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="password-confirm">Confirm Password</label>
-              <input
-                type="password"
-                ref={passwordConfirmRef}
-                id="password-confirm"
-                placeholder="Leave blank to keep the same"
-              />
+            <TextInput
+              id="password1"
+              type="password"
+              ref={passwordRef}
+              placeholder="Leave blank to keep the same"
+            />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="password-confirm" value="Confirm New Password" />
             </div>
-
-            <button disabled={loading} type="submit" className="submit-button">
-              Update
-            </button>
-          </form>
-        </div>
-
-        <div className="login-link">
-          <Link to="/">Cancel</Link>
-        </div>
-      </div>
+            <TextInput
+              id="password-confirm"
+              type="password"
+              ref={passwordConfirmRef}
+              placeholder="Leave blank to keep the same"
+            />
+          </div>
+          <Button disabled={loading} type="submit">
+            Submit
+          </Button>
+          <div>
+            <Link to="/">Cancel</Link>
+          </div>
+        </form>
+      </Card>
     </>
   );
 }
