@@ -14,23 +14,20 @@ function Flashcards() {
     const [options, setOptions] = useState([]);
     const [score, setScore] = useState(0);
     const [tries, setTries] = useState(0);
-    const [timeLeft, setTimeLeft] = useState(60);
+    const [timeLeft, setTimeLeft] = useState(3600);
     const [showAnswer, setShowAnswer] = useState(false);
     const [selectedCategoryWords, setSelectedCategoryWords] = useState([]);
 
     useEffect(() => {
         const words = category ? getWordsByCategory(category) : getRandomWords();
-        console.log(category)
-        console.log(words)
         setSelectedCategoryWords(words);
     }, [category, getWordsByCategory, getRandomWords]);
 
     useEffect(() => {
         if (selectedCategoryWords && selectedCategoryWords.length > 0) {
             generateOptions(selectedCategoryWords, currentIndex);
-            console.log(options)
         }
-    }, [currentIndex]);
+    }, [currentIndex, selectedCategoryWords]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -97,7 +94,7 @@ function Flashcards() {
     const resetGame = () => {
         setScore(0);
         setCurrentIndex(0);
-        setTimeLeft(60);
+        setTimeLeft(3600);
         setTries(0);
         setShowAnswer(false);
     };

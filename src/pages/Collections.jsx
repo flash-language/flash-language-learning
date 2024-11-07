@@ -17,18 +17,23 @@ function Collections({ onSelectCategory }) {
     navigate(`/collections/${category}`);
   };
 
+
+
+
   return (
 
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
         {Object.keys(collections).map((category) => (
-
+          
 
           <Card key={category}
             className="max-w-sm"
-            imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc={`../src/assets/images/${category}.png`}
+            imgAlt={category}
+            imgSrc={`src/assets/images/${category}.png`}
+    
+
           >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {category.charAt(0).toUpperCase() + category.slice(1)}

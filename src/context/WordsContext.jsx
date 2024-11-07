@@ -32,7 +32,7 @@ function WordsProvider({ children }) {
     };
   }
 
-  function getWordsByCategory(category = selectedCategory) {
+  function getWordsByCategory(category) {
     if (!category) return getRandomWords(); 
     return wordsData ? wordsData.filter((word) => word.category === category) : [];
   }
