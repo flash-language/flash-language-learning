@@ -8,6 +8,7 @@ const WordsContext = createContext();
 function WordsProvider({ children }) {
   const [wordsData, setWordsData] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null); 
+  const [selectedLanguage, setSelectedLanguage] = useState('french')
   const url = "https://flash-language-5bfe9-default-rtdb.europe-west1.firebasedatabase.app/words.json";
 
   useEffect(() => {
@@ -47,6 +48,9 @@ function WordsProvider({ children }) {
     return shuffled.slice(0, count);
   }
 
+  function handleLanguageSelection(language) { 
+    setSelectedLanguage(language); 
+  }
 
   // Add a new word to Firebase
   async function addWord(newWord) {
@@ -80,6 +84,8 @@ function WordsProvider({ children }) {
         addWord,
         deleteWord,
         getRandomWords,
+        selectedLanguage,
+        handleLanguageSelection,
       }}
     >
       {children}
