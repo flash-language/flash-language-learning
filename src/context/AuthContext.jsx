@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword,
     signOut, 
     sendPasswordResetEmail, 
     updateEmail as fbUpdateEmail, 
-    updatePassword as fbUpdatePassword } from "firebase/auth";
+    updatePassword as fbUpdatePassword, deleteUser } from "firebase/auth";
 
 import { db } from "./firebase"; // Import Firestore instance
 import { doc, setDoc } from "firebase/firestore"; // Firestore methods
@@ -65,6 +65,19 @@ export function AuthProvider({ children }) {
             }
         });
         return unsubscribe;
+    }, [])
+
+    async function deleteAccount() {
+        if (currentUser) {
+            try {
+                await deleteUser(currentUser);
+                setCurrentUser(null); 
+            } catch (error) {
+                console.error("Error deleting user:", error);
+                throw error; 
+            }
+        }
+    }
     }, []);
 
     
@@ -77,6 +90,7 @@ export function AuthProvider({ children }) {
         resetPassword,
         updateEmail,
         updatePassword,
+        deleteAccount,
     }
 
     return (

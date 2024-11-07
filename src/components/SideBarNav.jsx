@@ -40,12 +40,12 @@ function SideBarNav () {
                 <Sidebar.Items>
                   <Sidebar.ItemGroup>
                     <Sidebar.Item icon={HiPencil}>
-                    <NavLink to="/flashcards">Flashwords</NavLink>
+                    <NavLink to="/flashcards" onClick={handleClose}>Flashwords</NavLink>
                     </Sidebar.Item>
                     <Sidebar.Item icon={HiCollection}>
-                    <NavLink to="/collections">Collections</NavLink>
+                    <NavLink to="/collections" onClick={handleClose}>Collections</NavLink>
                     </Sidebar.Item>
-                    <Sidebar.Item href="/" icon={HiChartPie}>
+                    <Sidebar.Item href="/" icon={HiChartPie} onClick={handleClose}>
                       Dashboard
                     </Sidebar.Item>
                     <Sidebar.Item href="/users" icon={HiUsers}>

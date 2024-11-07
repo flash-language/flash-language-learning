@@ -41,11 +41,14 @@ export default function UpdateProfile() {
   }
 
   return (
-    <>
-      {error && <div className="error-message">{error}</div>}
-      <Card className="max-w-sm">
-        <h2 className="auth-title">Update Profile</h2>
-        <h2 className="auth-title">Sign Up</h2>
+    <div className="update-profile-page flex items-center justify-center min-h-screen bg-gray-100">
+      <Card className="max-w-sm w-full">
+        <h2 className="auth-title text-center text-2xl font-semibold mb-4">Update Profile</h2>
+        {error && (
+          <div className="text-red-600 text-center mb-4">
+            {error}
+          </div>
+        )}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div>
             <div className="mb-2 block">
@@ -84,11 +87,11 @@ export default function UpdateProfile() {
           <Button disabled={loading} type="submit">
             Submit
           </Button>
-          <div>
+          <div className="text-center mt-4">
             <Link to="/">Cancel</Link>
           </div>
         </form>
       </Card>
-    </>
+    </div>
   );
 }
