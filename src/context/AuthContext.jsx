@@ -8,6 +8,10 @@ import { createUserWithEmailAndPassword,
     updateEmail as fbUpdateEmail, 
     updatePassword as fbUpdatePassword } from "firebase/auth";
 
+import { db } from "./firebase"; // Import Firestore instance
+import { doc, setDoc } from "firebase/firestore"; // Firestore methods
+import { createOrUpdateUser } from "../assets/firestoreUtils";
+
 const AuthContext = React.createContext()
 
 export function useAuth() {
@@ -46,13 +50,24 @@ export function AuthProvider({ children }) {
         }
     }
 
+
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            setCurrentUser(user)
+        const unsubscribe = auth.onAuthStateChanged(async (user) => {
+            setCurrentUser(user);
             setLoading(false);
-        })
+    
+            if (user) {
+                try {
+                    await createOrUpdateUser(user);
+                } catch (error) {
+                    console.error("Error updating user:", error);
+                }
+            }
+        });
         return unsubscribe;
-    }, [])
+    }, []);
+
+    
     
     const value = {
         currentUser,

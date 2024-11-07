@@ -16,6 +16,7 @@ import Collections from './pages/Collections';
 import AddWords from './components/AddWords';
 import Category from './pages/Category';
 import BottomPage from './components/BottomPage';
+import UsersList from './components/UsersList.jsx';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>} />
           <Route path="/flashcards/:categoryName?" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
           <Route path="/add-word-form" element={ <PrivateRoute><AddWords /></PrivateRoute> } />
+          <Route path="/users" element={ <PrivateRoute><UsersList /></PrivateRoute> } />
         </Routes>
       </AuthProvider>
       <BottomPage className="bottompage"/>

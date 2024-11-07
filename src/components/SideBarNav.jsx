@@ -48,7 +48,7 @@ function SideBarNav () {
                     <Sidebar.Item href="/" icon={HiChartPie}>
                       Dashboard
                     </Sidebar.Item>
-                    <Sidebar.Item href="/users/list" icon={HiUsers}>
+                    <Sidebar.Item href="/users" icon={HiUsers}>
                       Users list
                     </Sidebar.Item>
                   </Sidebar.ItemGroup>
