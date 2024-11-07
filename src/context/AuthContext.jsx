@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword,
     signOut, 
     sendPasswordResetEmail, 
     updateEmail as fbUpdateEmail, 
-    updatePassword as fbUpdatePassword } from "firebase/auth";
+    updatePassword as fbUpdatePassword, deleteUser } from "firebase/auth";
 
 const AuthContext = React.createContext()
 
@@ -53,6 +53,18 @@ export function AuthProvider({ children }) {
         })
         return unsubscribe;
     }, [])
+
+    async function deleteAccount() {
+        if (currentUser) {
+            try {
+                await deleteUser(currentUser);
+                setCurrentUser(null); 
+            } catch (error) {
+                console.error("Error deleting user:", error);
+                throw error; 
+            }
+        }
+    }
     
     const value = {
         currentUser,
@@ -62,6 +74,7 @@ export function AuthProvider({ children }) {
         resetPassword,
         updateEmail,
         updatePassword,
+        deleteAccount,
     }
 
     return (

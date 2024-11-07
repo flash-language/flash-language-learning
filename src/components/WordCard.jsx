@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Card } from 'flowbite-react';
+import { WordsContext } from "../context/WordsContext.jsx";
+import { useContext } from 'react';
 
 const WordCard = ({ word, showAnswer }) => {
+    const {selectedLanguage } = useContext(WordsContext);
     return (
 
         <>
@@ -15,7 +18,7 @@ const WordCard = ({ word, showAnswer }) => {
                     {word.english}
                 </h5>
                 <h5 className="text-2xl font-bold text-green-500 dark:text-green-400 text-center">
-                    {showAnswer && word.french}
+                    {showAnswer && word[selectedLanguage]}
                 </h5>
             </Card>
 
