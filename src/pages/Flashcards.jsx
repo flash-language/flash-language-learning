@@ -6,6 +6,7 @@ import { logEvent } from "../assets/loggingUtils.jsx";
 import { WordsContext } from "../context/WordsContext.jsx";
 import { useParams } from "react-router-dom";
 import { Button, Card } from "flowbite-react";
+import { useAuth } from "../context/AuthContext.jsx";
 
 function Flashcards() {
   const { category } = useParams();
@@ -22,6 +23,10 @@ function Flashcards() {
   const [timeLeft, setTimeLeft] = useState(60);
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedCategoryWords, setSelectedCategoryWords] = useState([]);
+  const {currentUser} = useAuth();
+
+  const userId = currentUser ? currentUser.uid : null;
+  console.log(userId)
 
   useEffect(() => {
     const words = category ? getWordsByCategory(category) : getRandomWords();
@@ -48,6 +53,7 @@ function Flashcards() {
       logEvent("game_end", {
         score,
         currentWordId: selectedCategoryWords[currentIndex]?.id,
+        userId: userId,
       });
       resetGame();
     }
