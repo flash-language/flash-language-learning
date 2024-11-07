@@ -19,7 +19,7 @@ function Flashcards() {
   const [options, setOptions] = useState([]);
   const [score, setScore] = useState(0);
   const [tries, setTries] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(3600);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedCategoryWords, setSelectedCategoryWords] = useState([]);
 
@@ -106,7 +106,7 @@ function Flashcards() {
   const resetGame = () => {
     setScore(0);
     setCurrentIndex(0);
-    setTimeLeft(3600);
+    setTimeLeft(60);
     setTries(0);
     setShowAnswer(false);
   };
