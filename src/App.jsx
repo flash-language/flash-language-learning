@@ -6,7 +6,7 @@ import Flashcards from "./pages/Flashcards";
 import Homepage from "./pages/Homepage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NavigationBar from "./components/NavigationBar";
-import SideBar from "./components/SideBar";
+import SideBarNav from "./components/SideBarNav.jsx";
 import About from "./pages/About";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <NavigationBar className="navigationbar"/>
-      <SideBar/>
+      <SideBarNav />
       <AuthProvider>
         <Routes>
           <Route path="/about" element={<About />} />

@@ -14,7 +14,7 @@ import {
 } from "react-icons/hi";
 
 
-function SideBar () {
+function SideBarNav () {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => setIsOpen(false);
@@ -69,4 +69,4 @@ function SideBar () {
   );
 }
 
-export default SideBar;
+export default SideBarNav;

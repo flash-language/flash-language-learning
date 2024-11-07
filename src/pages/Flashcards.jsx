@@ -20,12 +20,15 @@ function Flashcards() {
 
     useEffect(() => {
         const words = category ? getWordsByCategory(category) : getRandomWords();
+        console.log(category)
+        console.log(words)
         setSelectedCategoryWords(words);
     }, [category, getWordsByCategory, getRandomWords]);
 
     useEffect(() => {
         if (selectedCategoryWords && selectedCategoryWords.length > 0) {
             generateOptions(selectedCategoryWords, currentIndex);
+            console.log(options)
         }
     }, [currentIndex]);
 
