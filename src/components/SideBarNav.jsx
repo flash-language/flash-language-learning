@@ -45,7 +45,7 @@ function SideBarNav () {
                     <Sidebar.Item icon={HiCollection}>
                     <NavLink to="/collections" onClick={handleClose}>Collections</NavLink>
                     </Sidebar.Item>
-                    <Sidebar.Item href="/" icon={HiChartPie} onClick={handleClose}>
+                    <Sidebar.Item href="/stats" icon={HiChartPie} onClick={handleClose}>
                       Dashboard
                     </Sidebar.Item>
                     <Sidebar.Item href="/users" icon={HiUsers}>

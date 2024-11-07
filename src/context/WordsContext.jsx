@@ -34,13 +34,19 @@ function WordsProvider({ children }) {
   }
 
   function getWordsByCategory(category) {
+    console.log("in context 1: Filtering words for category:", category);
+    
     if (!category) return getRandomWords(); 
     return wordsData ? wordsData.filter((word) => word.category === category) : [];
+    
   }
-
+  // we let comments on purpose for further investigation
   function setCategory(category) {
-    setSelectedCategory(category);  
+    setSelectedCategory(category);
+    //console.log("in context 2: category inside setCategory",category)  
+    //console.log("in context 3: selectedCategory inside setCategory",selectedCategory)  
   }
+  //console.log("in context 4: selectedCategory inside setCategory",selectedCategory)  
 
   function getRandomWords(count = 20) {
     if (!wordsData) return []; 

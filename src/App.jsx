@@ -17,6 +17,7 @@ import AddWords from './components/AddWords';
 import Category from './pages/Category';
 import BottomPage from './components/BottomPage';
 import UsersList from './components/UsersList.jsx';
+import UserStatistics from './components/UserStatistics.jsx';
 
 function App() {
   return (
@@ -34,9 +35,10 @@ function App() {
           <Route path="/collections/:categoryName" element={<Category />} />
           <Route path="/update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
           <Route path="/" element={<PrivateRoute><Homepage /></PrivateRoute>} />
-          <Route path="/flashcards/:categoryName?" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
+          <Route path="/flashcards/:category?" element={ <PrivateRoute><Flashcards /></PrivateRoute> } />
           <Route path="/add-word-form" element={ <PrivateRoute><AddWords /></PrivateRoute> } />
           <Route path="/users" element={ <PrivateRoute><UsersList /></PrivateRoute> } />
+          <Route path="/stats" element={ <PrivateRoute><UserStatistics /></PrivateRoute> } />
         </Routes>
       </AuthProvider>
       <BottomPage className="bottompage"/>

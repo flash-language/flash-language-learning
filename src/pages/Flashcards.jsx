@@ -4,12 +4,13 @@ import OptionButton from "../components/OptionButton";
 import { shuffleArray } from "../assets/utils.jsx";
 import { logEvent } from "../assets/loggingUtils.jsx";
 import { WordsContext } from "../context/WordsContext.jsx";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button, Card } from "flowbite-react";
 import { useAuth } from "../context/AuthContext.jsx";
 
 function Flashcards() {
   const { category } = useParams();
+  const navigate = useNavigate();
   const {
     getRandomWords,
     getWordsByCategory,
@@ -23,15 +24,34 @@ function Flashcards() {
   const [timeLeft, setTimeLeft] = useState(60);
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedCategoryWords, setSelectedCategoryWords] = useState([]);
-  const {currentUser} = useAuth();
+  const { currentUser } = useAuth();
 
   const userId = currentUser ? currentUser.uid : null;
-  console.log(userId)
 
   useEffect(() => {
+    // Log game start when the component is mounted
+    logEvent("game_start", {
+      score,
+      currentWordId: selectedCategoryWords[currentIndex]?.id,
+      userId: userId,
+    });
+
+    // not having the same behavior. on purpose we let comment for further investigation 
     const words = category ? getWordsByCategory(category) : getRandomWords();
+    //console.log("in flashwords 1 : Selected category:", category);
+    //console.log("in flashwords 2 : Filtered words:", words);
+        
     setSelectedCategoryWords(words);
     resetGame();
+
+    // Cleanup function to log game end when leaving or navigating away
+    return () => {
+      logEvent("game_end", {
+        score,
+        currentWordId: selectedCategoryWords[currentIndex]?.id,
+        userId: userId,
+      });
+    };
   }, [category, getWordsByCategory, getRandomWords, selectedLanguage]);
 
   useEffect(() => {
@@ -44,6 +64,8 @@ function Flashcards() {
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
     }, 1000);
+
+    // Cleanup the timer on unmount
     return () => clearInterval(timer);
   }, []);
 
@@ -84,17 +106,17 @@ function Flashcards() {
       if (isCorrect) {
         let points = 3 - tries;
         setScore((prevScore) => prevScore + points);
-        logEvent("click", { isCorrect, score, currentWordId });
+        logEvent("click", { isCorrect, score, currentWordId, userId: userId });
         const nextIndex = (currentIndex + 1) % selectedCategoryWords.length;
         setCurrentIndex(nextIndex);
       } else {
         if (tries < 2) {
           setTries(tries + 1);
           alert(`Incorrect! You have ${2 - tries} tries left :)`);
-          logEvent("click", { isCorrect, score, currentWordId });
+          logEvent("click", { isCorrect, score, currentWordId, userId: userId });
         } else {
           setShowAnswer(true);
-          logEvent("click", { isCorrect, score, currentWordId });
+          logEvent("click", { isCorrect, score, currentWordId, userId: userId });
           setTimeout(handleNextCard, 3000); // penalty of 3 seconds
         }
       }
