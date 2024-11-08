@@ -31,7 +31,7 @@ function Collections({ onSelectCategory }) {
           <Card key={category}
             className="max-w-sm"
             imgAlt={category}
-            imgSrc={`src/assets/images/${category}.png`}
+            imgSrc={`/${category}.png`}
     
 
           >
