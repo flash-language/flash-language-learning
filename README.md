@@ -30,6 +30,11 @@ Select Category: Choose a vocabulary category to start learning.
 Practice with Flashcards: Guess the word meaning or translation, then flip the card for the answer.
 View Progress: Check the statistics dashboard to view learning progress.
 
+## Short Term To Do list
+Integrate charts for better data visualization.
+Integrate with an image library to render images correctly.
+Integrate with translation API.
+
 ## Contributing
 Contributions to FlashWords are welcome! Please open an issue or submit a pull request with your suggestions.
 
