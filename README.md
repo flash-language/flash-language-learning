@@ -4,20 +4,20 @@ FlashWords is a React-based application designed to help learners acquire new vo
 
 ## Features
 **Interactive Flashcards:**
-Provides a simple and effective way for users to learn new words in their target language, showing the word on one side of the card and its definition or translation on the other.
+Provides a simple and effective way for users to learn new words in their target language, showing the word on one side of the card and its definition or translation on the other.\
 **Category-Based Learning:**
-Users can choose vocabulary categories based on topics, such as common phrases, travel, food, and more, to tailor their learning experience.
+Users can choose vocabulary categories based on topics, such as common phrases, travel, food, and more, to tailor their learning experience.\
 **User Authentication:** 
-Allows users to create accounts, log in, and save their progress with Firebase Authentication.
+Allows users to create accounts, log in, and save their progress with Firebase Authentication.\
 **Responsive Design:**
-Designed to be mobile-friendly, FlashWords works seamlessly across devices, making it accessible for learners on the go.
+Designed to be mobile-friendly, FlashWords works seamlessly across devices, making it accessible for learners on the go.\
 **Real-Time Progress Tracking:** 
-Firebase Realtime Database logs user interactions, allowing for progress tracking over time.
+Firebase Realtime Database logs user interactions, allowing for progress tracking over time.\
 **Progress Analytics:**
-Shows statistics for each user, including quiz scores and average response times, to monitor learning progress and encourage regular practice.
+Shows statistics for each user, including quiz scores and average response times, to monitor learning progress and encourage regular practice.\
 **Privacy and Related Rights:**
 Users can delete their own data and logs at any moment if desired. Their experience is not altered.
-Data is open to the public in this version. Anyone can read and write data. Rules will be changed later.
+Data is open to the public in this version. Anyone can read and write data. Rules will be changed later.\
 
 ## Technology Stack
 **Frontend:** React with Flowbite for UI components, Notifications for feedback "alerts for the moments".
