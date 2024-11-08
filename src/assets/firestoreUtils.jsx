@@ -19,8 +19,6 @@ export async function createOrUpdateUser(user) {
         lastLogin: lastLogin,
     }
 
-    //console.log("userData just composed ready to posted ..",userData)
-
     axios.post(userDataUrl,userData)
     .then((response) => console.log('User data saved successfully:', response.data))
     .catch((e) => console.log("Error sending users data:",e))
