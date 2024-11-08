@@ -43,17 +43,17 @@ function Homepage() {
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
         <Carousel>
           <img
-            src="public/learn-2001847_1280.jpg"
+            src="/public/learn-2001847_1280.jpg"
             alt="Hello"
             className="w-full h-full object-cover" 
           />
           <img
-            src="public/welcome-905562_1280.webp"
+            src="/public/welcome-905562_1280.webp"
             alt="welcome"
             className="w-full h-full object-cover"
           />
           <img
-            src="public/Flashcards-language-cards-for-learning-a-foreign-language.-The-best-method-of-memorizing-words.jpg"
+            src="/public/Flashcards-language-cards-for-learning-a-foreign-language.-The-best-method-of-memorizing-words.jpg"
             alt="Flashcards"
             className="w-full h-full object-contain"
           />
