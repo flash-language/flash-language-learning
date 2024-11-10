@@ -12,7 +12,7 @@ const WordCard = ({ word, showAnswer }) => {
             <Card
                 className="w-64 h-80 bg-white rounded-lg shadow-md overflow-hidden flex flex-col items-center p-4"
                 imgAlt={word.english}
-                imgSrc={word.imageUrl}
+                imgSrc={`/public/${word.english}.png`}
             >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
                     {word.english}

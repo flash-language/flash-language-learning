@@ -156,7 +156,7 @@ function Flashcards() {
           <Button onClick={() => handleLanguageSelection("arabic")}>Arabic</Button>
         </Button.Group>
 
-        <h1 className="text-2xl font-bold mb-6 text-center">Guess the Word!</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center mt-7">Guess the Word!</h1>
 
         <div className="flex flex-row space-x-24 m-7">
           <h5 className="text-2xl font-bold tracking-tight text-gray-500 dark:text-white text-center">
@@ -176,7 +176,7 @@ function Flashcards() {
           showAnswer={showAnswer}
         />
 
-        <div className="w-full max-w-md flex justify-center m-7">
+        <div className="w-full max-w-md flex justify-center m-5">
           <Button.Group className="max-w-sm content-center">
             {options.map((option, index) => (
               <Button

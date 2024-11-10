@@ -6,12 +6,12 @@ function About() {
           <h2>Our Journey</h2>
           <div className="team-members">
             <img
-              src="public/1549462685858.jpeg"
+              src="/Ahmed_1549462685858.jpeg"
               alt="Ahmed Belabdia"
               className="team-member-image"
             />
             <img
-              src="public/1576186419164.jpeg"
+              src="/Fiona_1576186419164.jpeg"
               alt="Fiona Hulse"
               className="team-member-image"
             />
